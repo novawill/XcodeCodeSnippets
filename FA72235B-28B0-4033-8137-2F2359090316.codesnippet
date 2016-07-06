@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>rf</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //刷新UITableView
+     [weakself.&lt;#tabelView#&gt; reloadData];
+            
+            //更新header和footer状态
+            [weakSelf.subjectTableView.mj_header endRefreshing];
+            [weakSelf.subjectTableView.mj_footer endRefreshing];
+            weakSelf.subjectTableView.mj_header.hidden = NO;
+            weakSelf.subjectTableView.mj_footer.hidden = NO;
+            //处理全部加载完成的情况
+            if (subjectModelArray.count &lt; 5) {
+                
+                //数据请求完毕
+                [weakSelf.subjectTableView.mj_footer endRefreshingWithNoMoreData];
+                
+                
+            }else
+            {
+                //当前请求的数据小于totalCount时，重置footer的状态
+                [weakSelf.subjectTableView.mj_footer resetNoMoreData];
+            }
+            
+        });
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FA72235B-28B0-4033-8137-2F2359090316</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Refresh</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
